@@ -2,5 +2,7 @@
   "name": "Referral Privacy Manager",
   "description": "Enterprise referral privacy and multi-domain traffic management SaaS platform for configuring W3C Referrer-Policy headers, managing intermediate bridge links, and analyzing outbound traffic.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
