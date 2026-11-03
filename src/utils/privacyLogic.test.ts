@@ -7,6 +7,7 @@ import {
   calculateTrafficSummary,
   normalizeDomainInput,
 } from './privacyLogic';
+import { handleStaticApiFallback } from './staticFallbackStore';
 
 test('validateDestinationUrl enforces HTTPS and rejects open redirects', () => {
   const valid = validateDestinationUrl('https://www.dca.com/offers/summer?utm_source=bca');
@@ -93,4 +94,12 @@ test('normalizeDomainInput cleans domains properly', () => {
     domain: 'abc.com',
   });
   assert.equal(normalizeDomainInput('invalid_domain').valid, false);
+});
+
+test('handleStaticApiFallback returns seeded workspace data for GitHub Pages static deployment', () => {
+  const bootstrap = handleStaticApiFallback('/api/bootstrap', { method: 'GET' });
+  assert.equal(Array.isArray(bootstrap.websites), true);
+  assert.equal(bootstrap.websites.length >= 5, true);
+  assert.equal(Array.isArray(bootstrap.links), true);
+  assert.equal(bootstrap.links.length >= 5, true);
 });
